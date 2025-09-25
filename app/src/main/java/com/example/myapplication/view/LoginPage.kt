@@ -28,11 +28,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.myapplication.core.utils.ValidationUtil
 import com.example.myapplication.managers.LoginManager
+import com.example.myapplication.ui.theme.MyApplicationTheme
 
 @Composable
 fun LoginPage(navController: NavController? = null) {
@@ -52,9 +55,9 @@ fun LoginPage(navController: NavController? = null) {
         Text(
             text = "LOGIN",
             fontSize = 32.sp,
-            modifier = Modifier.padding(bottom = 32.dp)
+            modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth(),
+            textAlign = TextAlign.Center
         )
-
         // Email Input
         OutlinedTextField(
             value = email,
@@ -121,7 +124,11 @@ fun LoginPage(navController: NavController? = null) {
 
         if (isLoading) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text("Logging in...", fontSize = 16.sp)
+                Text("Logging in...",
+                    fontSize = 16.sp,
+                    modifier = Modifier.padding(bottom = 32.dp)
+                        .fillMaxWidth(), // make sure it takes full width for centering
+                    textAlign = TextAlign.Center)
                 Spacer(modifier = Modifier.height(8.dp))
                 CircularProgressIndicator()
             }
@@ -142,5 +149,12 @@ fun LoginPage(navController: NavController? = null) {
                 }
             }
         }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun LoginPagePreview() {
+    MyApplicationTheme {
+        LoginPage()
     }
 }

@@ -102,10 +102,9 @@ fun StaffRowView(staff: StaffData) {
 
 @Preview(showBackground = true)
 @Composable
-fun LoginPagePreview() {
+fun StaffRowViewPreview() {
     StaffRowView(
         staff = StaffData(id = 1, email = "test", firstName = "firstName",
             lastName = "lastName", avatar = "")
     )
-
 }

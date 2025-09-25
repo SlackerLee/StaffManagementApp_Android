@@ -2,14 +2,23 @@ package com.example.myapplication.view
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -27,6 +36,8 @@ import com.example.myapplication.models.network.staff.StaffListRespData
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import com.example.myapplication.view.components.StaffRowView
 
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StaffListPage(
     token: String,
@@ -59,7 +70,18 @@ fun StaffListPage(
         )
     }
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(
+        modifier = Modifier.fillMaxSize()
+            .padding(WindowInsets.safeDrawing.asPaddingValues())
+        ) {
+        TopAppBar(
+            title = { Text("Staff List") },
+            navigationIcon = {
+                IconButton(onClick = { navController?.popBackStack() }) {
+                    Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                }
+            }
+        )
         // Token header
         Text(
             text = "Token: $token",
@@ -96,7 +118,9 @@ fun StaffListPage(
                                 if (isLoadingMore) {
                                     CircularProgressIndicator()
                                 } else {
-                                    Button(onClick = {
+                                    Button(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        onClick = {
                                         isLoadingMore = true
                                         fetchStaffList(
                                             page = currentPage + 1,
@@ -146,7 +170,7 @@ private fun fetchStaffList(
 
 @Preview(showBackground = true)
 @Composable
-fun LoginPagePreview() {
+fun StaffListPagePreview() {
     MyApplicationTheme {
         StaffListPage(token = "")
     }
