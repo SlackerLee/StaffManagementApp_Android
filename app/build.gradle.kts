@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.example.myapplication"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.myapplication"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -60,12 +60,10 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
-    // Converter for JSON parsing (choose one, e.g., Gson)
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation("com.google.code.gson:gson:2.13.2")
-
+    implementation("androidx.navigation:navigation-compose:2.8.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
