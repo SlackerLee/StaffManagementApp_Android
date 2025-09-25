@@ -1,9 +1,8 @@
 package com.example.myapplication.managers
 
 import com.example.myapplication.core.NetworkConstant
-import com.example.myapplication.models.network.login.LoginRespData
 import com.example.myapplication.models.enum.error.LoginError
-
+import com.example.myapplication.models.network.login.LoginRespData
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -68,11 +67,3 @@ object LoginManager {
         }
     }
 }
-
-//LoginManager.login("eve.holt@reqres.in", "cityslicka") { result ->
-//    result.onSuccess { resp ->
-//        println("Login success, token = ${resp.token}")
-//    }.onFailure { err ->
-//        println("Login failed: ${err.message}")
-//    }
-//}

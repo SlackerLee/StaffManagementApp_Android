@@ -9,7 +9,3 @@ object NetworkConstant {
     const val API_KEY_HEADER = "x-api-key"
     const val API_KEY_HEADER_VALUE = "reqres-free-v1"
 }
-
-// val url = NetworkConstant.LOGIN_URL
-//val headerKey = NetworkConstant.API_KEY_HEADER
-//val headerValue = NetworkConstant.API_KEY_HEADER_VALUE
