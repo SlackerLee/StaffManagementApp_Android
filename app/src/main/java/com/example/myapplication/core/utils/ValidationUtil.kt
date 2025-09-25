@@ -11,11 +11,3 @@ object ValidationUtil {
         return Regex(passwordRegEx).matches(password)
     }
 }
-
-// if (!ValidationUtil.isValidEmail(email)) {
-//    println("Invalid email")
-//}
-//
-//if (!ValidationUtil.isValidPassword(password)) {
-//    println("Invalid password")
-//}

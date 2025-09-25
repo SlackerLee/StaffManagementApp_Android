@@ -56,7 +56,7 @@ fun StaffRowView(staff: StaffData) {
         }
         Box(
             modifier = Modifier
-                .padding(8.dp) // 👈 outer padding for the whole avatar
+                .padding(8.dp) // outer padding for the whole avatar
                 .size(60.dp)   // total size including padding
                 .clip(CircleShape),
             contentAlignment = Alignment.Center
@@ -72,7 +72,7 @@ fun StaffRowView(staff: StaffData) {
                 )
             } else {
                 Text(
-                    text = "\uD83D\uDC64", // 👤 placeholder
+                    text = "\uD83D\uDC64",
                     color = Color.DarkGray,
                     style = MaterialTheme.typography.titleLarge
                 )

@@ -150,9 +150,6 @@ fun StaffListPage(
     }
 }
 
-/**
- * Helper to wrap StaffManager in a clean way
- */
 private fun fetchStaffList(
     page: Int,
     perPage: Int,
