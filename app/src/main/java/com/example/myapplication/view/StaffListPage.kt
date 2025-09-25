@@ -18,17 +18,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.myapplication.managers.StaffManager
 import com.example.myapplication.models.data.StaffData
 import com.example.myapplication.models.network.staff.StaffListRespData
+import com.example.myapplication.ui.theme.MyApplicationTheme
 import com.example.myapplication.view.components.StaffRowView
 
 @Composable
 fun StaffListPage(
     token: String,
-    navController: NavController
+    navController: NavController? = null
 ) {
     var staffData by remember { mutableStateOf<List<StaffData>>(emptyList()) }
     var isLoading by remember { mutableStateOf(true) }
@@ -82,7 +84,6 @@ fun StaffListPage(
                     items(staffData) { staff ->
                         StaffRowView(staff = staff)
                     }
-
                     // Load more section
                     if (currentPage < totalPages) {
                         item {
@@ -140,5 +141,13 @@ private fun fetchStaffList(
         }.onFailure { error ->
             onError(error)
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun LoginPagePreview() {
+    MyApplicationTheme {
+        StaffListPage(token = "")
     }
 }
